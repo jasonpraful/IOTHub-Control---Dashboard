@@ -58,13 +58,13 @@ class Control extends Component {
         const headers = {
             'Bypass-Tunnel-Reminder': 'true'
         }
-        await axios.get('https://jason.loca.lt/api/automationstatus',
+        await axios.get('https://jasonpraful.loca.lt/api/automationstatus',
             {
                 headers: headers,
             })
             .then(res => { this.setState({ plantauto: res.data.data.value }); })
             .catch(err => { alert('Plant Data: ' + err); })
-        await axios.get('https://jason.loca.lt/api/lastwatered',
+        await axios.get('https://jasonpraful.loca.lt/api/lastwatered',
             {
                 headers: headers,
             })
@@ -121,7 +121,7 @@ class Control extends Component {
     async controlPlantAutomation(value) {
         console.log(value)
         this.setState({ plantauto: value == true ? 'on' : 'off' })
-        await fetch('https://jason.loca.lt/api/controlautomation', {
+        await fetch('https://jasonpraful.loca.lt/api/controlautomation', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
             body: JSON.stringify({ value: value == true ? 'on' : 'off' })
@@ -135,7 +135,7 @@ class Control extends Component {
 
     async controlMotor(value) {
         if (value == 'on') {
-            await fetch('https://jason.loca.lt/api/motorcontrol', {
+            await fetch('https://jasonpraful.loca.lt/api/motorcontrol', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
                 body: JSON.stringify({ value: 'on' })
@@ -146,7 +146,7 @@ class Control extends Component {
                 .catch(err => { alert(err); this.setState({ plantauto: value == true ? 'off' : 'on' }) })
         }
         else if (value == 'off') {
-            await fetch('https://jason.loca.lt/api/motorcontrol', {
+            await fetch('https://jasonpraful.loca.lt/api/motorcontrol', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
                 body: JSON.stringify({ value: 'off' })

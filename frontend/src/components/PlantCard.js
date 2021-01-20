@@ -25,13 +25,13 @@ class PlantCard extends Component {
     const headers = {
       'Bypass-Tunnel-Reminder': 'true'
     }
-    await axios.get('https://jason.loca.lt/api/automationstatus',
+    await axios.get('https://jasonpraful.loca.lt/api/automationstatus',
       {
         headers: headers,
       })
       .then(res => { this.setState({ plantauto: res.data.data.value }); })
       .catch(err => { alert('Plant Data: ' + err); })
-    await axios.get('https://jason.loca.lt/api/lastwatered',
+    await axios.get('https://jasonpraful.loca.lt/api/lastwatered',
       {
         headers: headers,
       })
@@ -41,7 +41,7 @@ class PlantCard extends Component {
 
   async controlPlantAutomation() {
     console.log()
-    await fetch('https://jason.loca.lt/api/controlautomation', {
+    await fetch('https://jasonpraful.loca.lt/api/controlautomation', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
       body: JSON.stringify({ value: this.state.plantauto === 'on' ? 'off' : 'on' })
@@ -56,7 +56,7 @@ class PlantCard extends Component {
   async controlMotor(event) {
     console.log(event.type)
      if (event.type === 'mousedown') {
-         await fetch('https://jason.loca.lt/api/motorcontrol', {
+         await fetch('https://jasonpraful.loca.lt/api/motorcontrol', {
              method: 'POST',
              headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
              body: JSON.stringify({ value: 'on' })
@@ -67,7 +67,7 @@ class PlantCard extends Component {
              .catch(err => { alert(err);})
      }
      else if (event.type === 'mouseup') {
-         await fetch('https://jason.loca.lt/api/motorcontrol', {
+         await fetch('https://jasonpraful.loca.lt/api/motorcontrol', {
              method: 'POST',
              headers: { 'Content-Type': 'application/json; charset=utf-8', 'Bypass-Tunnel-Reminder': 'true' },
              body: JSON.stringify({ value: 'off' })

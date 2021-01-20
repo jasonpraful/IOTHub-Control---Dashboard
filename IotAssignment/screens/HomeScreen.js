@@ -55,13 +55,13 @@ class HomeScreen extends Component {
         const headers = {
             'Bypass-Tunnel-Reminder': 'true'
         }
-        await axios.get('https://jason.loca.lt/api/automationstatus',
+        await axios.get('https://jasonpraful.loca.lt/api/automationstatus',
             {
                 headers: headers,
             })
             .then(res => { this.setState({ plantauto: res.data.data.value }); })
             .catch(err => { alert('Plant Data: ' + err); })
-        await axios.get('https://jason.loca.lt/api/lastwatered',
+        await axios.get('https://jasonpraful.loca.lt/api/lastwatered',
             {
                 headers: headers,
             })
